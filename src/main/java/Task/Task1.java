@@ -20,33 +20,42 @@ import java.util.Scanner;
  */
 
 public class Task1 {
-    public List<Integer> readData() {
+    public static int[] readData() {
         System.out.print("Nhập số phần tử của mảng: ");
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         // khởi tạo arr
-        int [] arr = new int [n];
+        int[] arr = new int[n];
         System.out.print("Nhập các phần tử của mảng: \n");
         for (int i = 0; i < n; i++) {
             System.out.printf("a[%d] = ", i);
             arr[i] = scanner.nextInt();
         }
-
-        return null;
+        return arr;
     }
-
-    public List<Integer> sortNumberList(List<Integer> list){
-        //write your code here
-
-        return null;
-
+    public static int[] sortDES(int[] arr) {
+        // write your code here
+        int temp = arr[0];
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] < arr[j]) {
+                    temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+        }
+        return arr;
     }
-
     public static void main(String[] args) {
-        //write your code here
-
+        // write your code here
+        int[] arr = readData();
+        sortDES(arr);
+        System.out.println("Dãy số được sắp xếp giảm dần: ");
+        for(int i =0; i<arr.length; i++) {
+            System.out.print(arr[i]+" ");
+        }
     }
 }
-
 
 
