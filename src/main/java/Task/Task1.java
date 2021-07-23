@@ -1,7 +1,9 @@
 package Task;
-
 import java.util.List;
 import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  Write a program that will read a string containing numbers from the keyboard, each number is separated by comma ","
@@ -20,42 +22,36 @@ import java.util.Scanner;
  */
 
 public class Task1 {
-    public static int[] readData() {
-        System.out.print("Nhập số phần tử của mảng: ");
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        // khởi tạo arr
-        int[] arr = new int[n];
-        System.out.print("Nhập các phần tử của mảng: \n");
-        for (int i = 0; i < n; i++) {
-            System.out.printf("a[%d] = ", i);
-            arr[i] = scanner.nextInt();
-        }
-        return arr;
-    }
-    public static int[] sortDES(int[] arr) {
-        // write your code here
-        int temp = arr[0];
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] < arr[j]) {
-                    temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
-                }
+    public List<Integer> readData() {
+        //write your code here
+        try {
+            Scanner reader = new Scanner(new InputStreamReader(System.in));
+            System.out.println("Nhập chuỗi các số: ");
+            String line = reader.nextLine();
+            List<Integer> numbers = new ArrayList<>();
+            String[] strNumbers = line.replaceAll("\\s+", "").split(",");
+            for (String strNumber : strNumbers) {
+                numbers.add(Integer.parseInt(strNumber));
             }
+            return numbers;
+        } catch (Exception e) {
+            System.out.println("Có lỗi rồi: " + e.getMessage());
+            return new ArrayList<>();
         }
-        return arr;
+    }
+    public List<Integer> sortNumberList(List<Integer> list) {
+        //write your code here
+        list.sort(Collections.reverseOrder());
+        return list;
     }
     public static void main(String[] args) {
-        // write your code here
-        int[] arr = readData();
-        sortDES(arr);
-        System.out.println("Dãy số được sắp xếp giảm dần: ");
-        for(int i =0; i<arr.length; i++) {
-            System.out.print(arr[i]+" ");
+        //write your code here
+        Task1 task = new Task1();
+        List<Integer> numbers = task.readData();
+        if (!numbers.isEmpty()) {
+            List<Integer> sortedList = task.sortNumberList(numbers);
+            System.out.println("Sắp xếp giảm dần: " + sortedList);
         }
     }
 }
-
 
