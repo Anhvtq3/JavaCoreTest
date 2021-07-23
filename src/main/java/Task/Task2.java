@@ -28,7 +28,7 @@ public class Task2 {
         Map<Integer, Cat> map = new HashMap <Integer, Cat>();
         for(int i = 0; i<10; i++) {
             Cat cat = new Cat();
-            cat.setName("name"+i);
+            cat.setName("Cat"+i);
             cat.setAge(i);
             map.put(i, cat);
         }

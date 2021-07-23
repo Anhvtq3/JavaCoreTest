@@ -33,13 +33,13 @@ public class Task3 {
         //write your code here
         char[] charArray = message.toCharArray();
         boolean foundSpace = true;
-        //sử dụng vòng lặp for để duyệt các phần tử trong charArray
+
         for(int i = 0; i < charArray.length; i++) {
-            // nếu phần tử trong mảng là một chữ cái
+
             if(Character.isLetter(charArray[i])) {
-                // kiểm tra khoảng trắng có trước chữ cái
+
                 if(foundSpace) {
-                    //đổi chữ cái thành chữ in hoa bằng phương thức toUpperCase()
+
                     charArray[i] = Character.toUpperCase(charArray[i]);
                     foundSpace = false;
                 }
@@ -48,7 +48,7 @@ public class Task3 {
                 foundSpace = true;
             }
         }
-        // chuyển đổi mảng char thành string
+        
         message = String.valueOf(charArray);
         System.out.println("Chuỗi sau khi đổi: \n" + message);
         System.out.println("\n---------------------------------");
